@@ -2,9 +2,14 @@
 
 🟨 Install [Javy](https://github.com/bytecodealliance/javy) for GitHub Actions
 
-<p align=center>
-  <img src="https://github.com/jcbhmr/setup-javy/assets/61068799/b37a4547-7fdc-4087-a329-cbc133c26c7c">
-</p>
+<table align=center><td>
+
+```yaml
+- uses: jcbhmr/setup-javy@v1
+- run: javy compile main.js -o main.wasm
+```
+
+</table>
 
 ✅ Installs the `javy` CLI globally \
 📌 Supports version pinning \
