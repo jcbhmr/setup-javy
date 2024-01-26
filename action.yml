@@ -4,3 +4,21 @@ description: 🟨 Install Javy for GitHub Actions
 branding:
   icon: play
   color: blue
+
+inputs:
+  javy-token:
+    description: ""
+    default: ${{ github.server_url == 'https://github.com' && github.token || '' }}
+  javy-version:
+    description: ""
+    default: latest
+
+outputs:
+  javy-version:
+    description: ""
+  cache-hit:
+    description: ""
+
+runs:
+  using: node20
+  main: dist/main.js
