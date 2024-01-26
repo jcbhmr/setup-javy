@@ -4,6 +4,9 @@ import * as github from "@actions/github";
 import * as tc from "@actions/tool-cache";
 import * as semver from "semver";
 import { createUnauthenticatedAuth } from "@octokit/auth-unauthenticated";
+import { pipeline } from "node:stream/promises";
+import { createGunzip } from "node:zlib";
+import { createReadStream, createWriteStream } from "node:fs";
 
 const token = core.getInput("javy-token");
 const octokit = token
@@ -47,7 +50,12 @@ if (!found) {
   found = await tc.downloadTool(
     `https://github.com/bytecodealliance/javy/releases/download/v${version}/${archive}`,
   );
-  found = await tc.extract7z(found);
+  await pipeline(
+    createReadStream(found),
+    createGunzip(),
+    createWriteStream(found.slice(0, -3)),
+  )
+  found = found.slice(0, 3);
   found = await tc.cacheDir(found, "javy", version);
   core.info(`javy v${version} added to cache`);
 }
