@@ -1,0 +1,6 @@
+name: Setup Javy
+description: 🟨 Install Javy for GitHub Actions
+
+branding:
+  icon: play
+  color: blue
