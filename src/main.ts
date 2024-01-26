@@ -45,7 +45,7 @@ if (!found) {
   const archive = `javy-${target}-v${version}.gz`;
 
   found = await tc.downloadTool(
-    `https://github.com/javy/javy/releases/download/v${version}/${archive}`,
+    `https://github.com/bytecodealliance/javy/releases/download/v${version}/${archive}`,
   );
   found = await tc.extractTar(found);
   found = await tc.cacheDir(found, "javy", version);
