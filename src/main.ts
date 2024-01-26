@@ -47,7 +47,7 @@ if (!found) {
   found = await tc.downloadTool(
     `https://github.com/bytecodealliance/javy/releases/download/v${version}/${archive}`,
   );
-  found = await tc.extractTar(found);
+  found = await tc.extract7z(found);
   found = await tc.cacheDir(found, "javy", version);
   core.info(`javy v${version} added to cache`);
 }
