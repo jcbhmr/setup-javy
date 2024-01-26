@@ -2,6 +2,15 @@
 
 🟨 Install [Javy](https://github.com/bytecodealliance/javy) for GitHub Actions
 
+<p align=center>
+  <img src="https://github.com/jcbhmr/setup-javy/assets/61068799/b37a4547-7fdc-4087-a329-cbc133c26c7c">
+</p>
+
+✅ Installs the `javy` CLI globally \
+📌 Supports version pinning \
+⚡ Caches the installation in `$RUNNER_TOOL_CACHE` \
+📥 Downloads from [the Javy GitHub releases](https://github.com/bytecodealliance/javy/releases)
+
 ## Usage
 
 ![GitHub Actions](https://img.shields.io/static/v1?style=for-the-badge&message=GitHub+Actions&color=2088FF&logo=GitHub+Actions&logoColor=FFFFFF&label=)
