@@ -7,6 +7,8 @@ import { createUnauthenticatedAuth } from "@octokit/auth-unauthenticated";
 import { pipeline } from "node:stream/promises";
 import { createGunzip } from "node:zlib";
 import { createReadStream, createWriteStream } from "node:fs";
+import { mkdir } from "node:fs/promises";
+import { join } from "node:path";
 
 const token = core.getInput("javy-token");
 const octokit = token
@@ -50,12 +52,18 @@ if (!found) {
   found = await tc.downloadTool(
     `https://github.com/bytecodealliance/javy/releases/download/v${version}/${archive}`,
   );
+  await mkdir(`${found}-folder`);
   await pipeline(
     createReadStream(found),
     createGunzip(),
-    createWriteStream(found.slice(0, -3)),
-  )
-  found = found.slice(0, 3);
+    createWriteStream(
+      join(
+        `${found}-folder`,
+        process.platform === "win32" ? "javy.exe" : "javy",
+      ),
+    ),
+  );
+  found = `${found}-folder`;
   found = await tc.cacheDir(found, "javy", version);
   core.info(`javy v${version} added to cache`);
 }
