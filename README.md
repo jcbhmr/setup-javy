@@ -41,7 +41,7 @@ jobs:
 
 - **`javy-version`:** The version of Javy that was installed. This will be something like `1.3.0` or similar.
 
-- **`cache-hit`:** Whether or not Wasmtime was restored from the runner's cache or download anew.
+- **`cache-hit`:** Whether or not Javy was restored from the runner's cache or download anew.
 
 ## Development
 
