@@ -6,18 +6,18 @@ branding:
   color: blue
 
 inputs:
-  javy-token:
-    description: ""
-    default: ${{ github.server_url == 'https://github.com' && github.token || '' }}
   javy-version:
-    description: ""
+    description: Which version of Javy to install. This can be an exact version specifier such as '1.3.0' or a semver range like '~1.3.0' or '1.x'. Use 'latest' to always install the latest release. Defaults to 'latest'.
     default: latest
+  javy-token:
+    description: The GitHub token to use when fetching the version list from bytecodealliance/javy. You shouldn't have to touch this. The default is the 'github.token' if you're on github.com or unauthenticated (rate limited) if you're not on github.com.
+    default: ${{ github.server_url == 'https://github.com' && github.token || '' }}
 
 outputs:
   javy-version:
-    description: ""
+    description: The version of Javy that was installed. This will be something like '1.3.0' or similar.
   cache-hit:
-    description: ""
+    description: Whether or not Javy was restored from the runner's cache or download anew.
 
 runs:
   using: node20
